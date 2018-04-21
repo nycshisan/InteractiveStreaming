@@ -438,4 +438,4 @@ __pycache__/
 # End of https://www.gitignore.io/api/c++,node,macos,windows,visualstudio
 
 temp/
-!node-media-server/node_modules
+!RTMPServer/node-media-server/node_modules
