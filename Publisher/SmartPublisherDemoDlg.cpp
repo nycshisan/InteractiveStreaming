@@ -383,8 +383,6 @@ CSmartPublisherDemoDlg::CSmartPublisherDemoDlg(CWnd* pParent /*=NULL*/)
 void CSmartPublisherDemoDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_EDIT1_PB_QQ1, edit_pb_qq1);
-	DDX_Control(pDX, IDC_EDIT2_PB_QQ2, edit_pb_qq2_);
 	DDX_Control(pDX, IDC_EDIT_FRAME_RATE, edit_frame_rate_);
 	DDX_Control(pDX, IDC_EDIT_VIDEO_BITRATE, edit_bit_rate_);
 	DDX_Control(pDX, IDC_EDIT_KEYFRAME, edit_key_frame_);
@@ -490,7 +488,6 @@ BEGIN_MESSAGE_MAP(CSmartPublisherDemoDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_DESKTOP_CAMERA_SWITCH, &CSmartPublisherDemoDlg::OnBnClickedButtonDesktopCameraSwitch)
 	ON_BN_CLICKED(IDC_BUTTON_DISABLE_CAMERA_OVERLAY, &CSmartPublisherDemoDlg::OnBnClickedButtonDisableCameraOverlay)
 	ON_BN_CLICKED(IDC_BUTTON_DISABLE_DESKTOP_OVERLAY, &CSmartPublisherDemoDlg::OnBnClickedButtonDisableDesktopOverlay)
-	ON_BN_CLICKED(IDC_BUTTON_SET_RBGA_RECT_LAYER, &CSmartPublisherDemoDlg::OnBnClickedButtonSetRbgaRectLayer)
 	ON_BN_CLICKED(IDC_BUTTON_SETTING_CAPTURE_IMAGE_PATH, &CSmartPublisherDemoDlg::OnBnClickedButtonSettingCaptureImagePath)
 	ON_BN_CLICKED(IDC_BUTTON_CAPTURE_IMAGE, &CSmartPublisherDemoDlg::OnBnClickedButtonCaptureImage)
 	ON_BN_CLICKED(IDC_CHECK_VIDEO_SAME_IAMGE, &CSmartPublisherDemoDlg::OnBnClickedCheckVideoSameIamge)
@@ -501,7 +498,6 @@ BEGIN_MESSAGE_MAP(CSmartPublisherDemoDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_CHECK_FLIP_HORIZONTALCAMERA, &CSmartPublisherDemoDlg::OnBnClickedCheckFlipHorizontalcamera)
 	ON_BN_CLICKED(IDC_BUTTON_ROTATE_CAMERA, &CSmartPublisherDemoDlg::OnBnClickedButtonRotateCamera)
 	ON_MESSAGE(WM_USER_PB_SDK_CAPTURE_WINDOW_INVALID, &CSmartPublisherDemoDlg::OnSDKCaptureWindowInvalid)
-	ON_BN_CLICKED(IDC_MFCLINK1, &CSmartPublisherDemoDlg::OnBnClickedMfclink1)
 END_MESSAGE_MAP()
 
 
@@ -3419,64 +3415,6 @@ bool CSmartPublisherDemoDlg::SetLayersConfig()
 	return false;
 }
 
-void CSmartPublisherDemoDlg::OnBnClickedButtonSetRbgaRectLayer()
-{
-	if (BST_CHECKED == btn_check_desktop_camera_switch_.GetCheck())
-	{
-		if (publisher_handle_ != NULL && !layer_conf_wrappers_.empty())
-		{
-			auto r = GetIntValueFromEdit(&edit_rgba_rect_layer_red_);
-			r = ClipIntValue(r, 0, 255);
-
-			auto g = GetIntValueFromEdit(&edit_rgba_rect_layer_green_);
-			g = ClipIntValue(g, 0, 255);
-
-			auto b = GetIntValueFromEdit(&edit_rgba_rect_layer_blue_);
-			b = ClipIntValue(b, 0, 255);
-
-			auto a = GetIntValueFromEdit(&edit_rgba_rect_layer_alpha_);
-			a = ClipIntValue(a, 0, 255);
-
-			std::shared_ptr<nt_pb_sdk::layer_conf_wrapper_base> layer_conf;
-
-			for (auto iter = layer_conf_wrappers_.rbegin(); iter != layer_conf_wrappers_.rend(); ++iter)
-			{
-				ASSERT((*iter));
-				if (NT_PB_E_LAYER_TYPE_RGBA_RECTANGLE == (*iter)->getBase()->type_)
-				{
-					layer_conf = (*iter);
-					break;
-				}
-			}
-
-			if (!layer_conf)
-			{
-				return;
-			}
-
-			if (layer_conf->getBase()->index_ == layer_conf_wrappers_.front()->getBase()->index_)
-			{
-				return;
-			}
-
-			publisher_api_.EnableLayer(publisher_handle_, 0, layer_conf->getBase()->index_,
-				a != 0 ? 1 : 0);
-
-			auto rgba_conf = std::dynamic_pointer_cast<nt_pb_sdk::RGBARectangleLayerConfigWrapper>(layer_conf);
-			if (rgba_conf)
-			{
-				rgba_conf->conf_.red_ = r;
-				rgba_conf->conf_.green_ = g;
-				rgba_conf->conf_.blue_ = b;
-				rgba_conf->conf_.alpha_ = a;
-
-				publisher_api_.UpdateLayerConfig(publisher_handle_, 0, rgba_conf->getBase(), 0, nullptr);
-			}
-		}
-	}
-}
-
-
 void CSmartPublisherDemoDlg::OnBnClickedButtonSettingCaptureImagePath()
 {
 	std::wstring    sel_dir;
@@ -3746,10 +3684,4 @@ void CSmartPublisherDemoDlg::FillBitrateControlDefValue()
 	combox_h264_profile_.SetCurSel(0);
 
 	edit_video_encode_speed_.SetWindowTextW(_T("3"));
-}
-
-
-
-void CSmartPublisherDemoDlg::OnBnClickedMfclink1() {
-	// TODO: 在此添加控件通知处理程序代码
 }

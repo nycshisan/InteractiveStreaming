@@ -16,9 +16,6 @@
     <Filter Include="nt_pb_sdk">
       <UniqueIdentifier>{d8013138-c5a4-4a36-b4b0-b6500f6735e1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="nt_pb_sdk_ui">
-      <UniqueIdentifier>{36dcaf60-8367-4700-9b3b-04b3b5366858}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />

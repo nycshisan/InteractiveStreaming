@@ -104,7 +104,6 @@ public:
 	afx_msg void OnBnClickedButtonDesktopCameraSwitch();
 	afx_msg void OnBnClickedButtonDisableCameraOverlay();
 	afx_msg void OnBnClickedButtonDisableDesktopOverlay();
-	afx_msg void OnBnClickedButtonSetRbgaRectLayer();
 	afx_msg void OnBnClickedButtonSettingCaptureImagePath();
 	afx_msg void OnBnClickedButtonCaptureImage();
 	afx_msg LRESULT OnSDKCaptureWindowInvalid(WPARAM wParam, LPARAM lParam);
@@ -276,6 +275,4 @@ private:
 	int publisher_handle_count_;
 
 	NT_HANDLE region_choose_tool_handle_;
-public:
-	afx_msg void OnBnClickedMfclink1();
 };
