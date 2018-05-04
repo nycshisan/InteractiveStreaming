@@ -354,40 +354,7 @@ extern "C" NT_VOID NT_CALLBACK NT_PB_SDKPublisherEventHandle(NT_HANDLE handle, N
 }
 
 
-// CAboutDlg dialog used for App About
-
-class CAboutDlg : public CDialogEx
-{
-public:
-	CAboutDlg();
-
-// Dialog Data
-	enum { IDD = IDD_ABOUTBOX };
-
-	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-
-// Implementation
-protected:
-	DECLARE_MESSAGE_MAP()
-};
-
-CAboutDlg::CAboutDlg() : CDialogEx(CAboutDlg::IDD)
-{
-}
-
-void CAboutDlg::DoDataExchange(CDataExchange* pDX)
-{
-	CDialogEx::DoDataExchange(pDX);
-}
-
-BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
-END_MESSAGE_MAP()
-
-
 // CSmartPublisherDemoDlg dialog
-
-
 
 CSmartPublisherDemoDlg::CSmartPublisherDemoDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CSmartPublisherDemoDlg::IDD, pParent)
@@ -552,26 +519,6 @@ BOOL CSmartPublisherDemoDlg::OnInitDialog()
 	edit_pb_qq1.SetWindowTextW(_T("89030985"));
 	edit_pb_qq2_.SetWindowTextW(_T("2679481035"));
 
-
-	// Add "About..." menu item to system menu.
-
-	// IDM_ABOUTBOX must be in the system command range.
-	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
-	ASSERT(IDM_ABOUTBOX < 0xF000);
-
-	CMenu* pSysMenu = GetSystemMenu(FALSE);
-	if (pSysMenu != NULL)
-	{
-		BOOL bNameValid;
-		CString strAboutMenu;
-		bNameValid = strAboutMenu.LoadString(IDS_ABOUTBOX);
-		ASSERT(bNameValid);
-		if (!strAboutMenu.IsEmpty())
-		{
-			pSysMenu->AppendMenu(MF_SEPARATOR);
-			pSysMenu->AppendMenu(MF_STRING, IDM_ABOUTBOX, strAboutMenu);
-		}
-	}
 
 	// Set the icon for this dialog.  The framework does this automatically
 	//  when the application's main window is not a dialog
@@ -779,15 +726,7 @@ BOOL CSmartPublisherDemoDlg::OnInitDialog()
 
 void CSmartPublisherDemoDlg::OnSysCommand(UINT nID, LPARAM lParam)
 {
-	if ((nID & 0xFFF0) == IDM_ABOUTBOX)
-	{
-		CAboutDlg dlgAbout;
-		dlgAbout.DoModal();
-	}
-	else
-	{
-		CDialogEx::OnSysCommand(nID, lParam);
-	}
+	CDialogEx::OnSysCommand(nID, lParam);
 }
 
 // If you add a minimize button to your dialog, you will need the code below
@@ -2528,7 +2467,7 @@ void CSmartPublisherDemoDlg::ReFillCameraResolutionsCombox()
 	combox_camera_resolutions_.ResetContent();
 
 	if ( cur_sel_camera_index_ < 0
-		|| cur_sel_camera_index_ >= cameras_.size() )
+		|| cur_sel_camera_index_ >= static_cast<int>(cameras_.size()) )
 	{
 		return;
 	}
@@ -2565,7 +2504,7 @@ void CSmartPublisherDemoDlg::ReFillCameraFrameRateCombox()
 	combox_camera_frame_rate_.ResetContent();
 
 	if ( cur_sel_camera_index_ < 0
-		|| cur_sel_camera_index_ >= cameras_.size() )
+		|| cur_sel_camera_index_ >= static_cast<int>(cameras_.size()) )
 	{
 		return;
 	}
@@ -2573,7 +2512,7 @@ void CSmartPublisherDemoDlg::ReFillCameraFrameRateCombox()
 	auto& camera = cameras_[cur_sel_camera_index_];
 
 	if ( cur_sel_camera_resolutions_index_ < 0
-		|| cur_sel_camera_resolutions_index_ >= camera.capabilities_.size() )
+		|| cur_sel_camera_resolutions_index_ >= static_cast<int>(camera.capabilities_.size()) )
 	{
 		return;
 	}
@@ -2865,7 +2804,7 @@ void CSmartPublisherDemoDlg::OnCbnSelchangeComboWindowList()
 
 	if ( CB_ERR != sel_index && sel_index >= 0 )
 	{
-		if ( sel_index < capture_windows_.size() )
+		if ( sel_index < static_cast<int>(capture_windows_.size()) )
 		{
 			cur_sel_capture_window_ = capture_windows_[sel_index].hwnd_;
 		}
