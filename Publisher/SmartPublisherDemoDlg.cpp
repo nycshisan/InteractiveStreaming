@@ -12,7 +12,6 @@
 #include "SmartPublisherDemo.h"
 #include "SmartPublisherDemoDlg.h"
 #include "afxdialogex.h"
-#include "nt_image_layer_config_dlg.h"
 
 #include <locale>
 #include <codecvt>
@@ -492,8 +491,6 @@ BEGIN_MESSAGE_MAP(CSmartPublisherDemoDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_DISABLE_CAMERA_OVERLAY, &CSmartPublisherDemoDlg::OnBnClickedButtonDisableCameraOverlay)
 	ON_BN_CLICKED(IDC_BUTTON_DISABLE_DESKTOP_OVERLAY, &CSmartPublisherDemoDlg::OnBnClickedButtonDisableDesktopOverlay)
 	ON_BN_CLICKED(IDC_BUTTON_SET_RBGA_RECT_LAYER, &CSmartPublisherDemoDlg::OnBnClickedButtonSetRbgaRectLayer)
-	ON_BN_CLICKED(IDC_BUTTON_ADD_IMAGE_WATERMARK, &CSmartPublisherDemoDlg::OnBnClickedButtonAddImageWatermark)
-	ON_BN_CLICKED(IDC_BUTTON_DISABLE_IMAGE_WATERMARK, &CSmartPublisherDemoDlg::OnBnClickedButtonDisableImageWatermark)
 	ON_BN_CLICKED(IDC_BUTTON_SETTING_CAPTURE_IMAGE_PATH, &CSmartPublisherDemoDlg::OnBnClickedButtonSettingCaptureImagePath)
 	ON_BN_CLICKED(IDC_BUTTON_CAPTURE_IMAGE, &CSmartPublisherDemoDlg::OnBnClickedButtonCaptureImage)
 	ON_BN_CLICKED(IDC_CHECK_VIDEO_SAME_IAMGE, &CSmartPublisherDemoDlg::OnBnClickedCheckVideoSameIamge)
@@ -3474,79 +3471,6 @@ void CSmartPublisherDemoDlg::OnBnClickedButtonSetRbgaRectLayer()
 				rgba_conf->conf_.alpha_ = a;
 
 				publisher_api_.UpdateLayerConfig(publisher_handle_, 0, rgba_conf->getBase(), 0, nullptr);
-			}
-		}
-	}
-}
-
-
-void CSmartPublisherDemoDlg::OnBnClickedButtonAddImageWatermark()
-{
-	nt_image_layer_config_dlg config_dlg(&publisher_api_);
-
-	auto ret = config_dlg.DoModal();
-
-	if ( IDOK == ret )
-	{
-		auto file_name = config_dlg.FileNameUtf8();
-		auto left = config_dlg.Left();
-		auto top = config_dlg.Top();
-		auto width = config_dlg.Width();
-		auto height = config_dlg.Height();
-
-		if ( !file_name.empty()
-			&& width > 0
-			&& height > 0
-			)
-		{
-			image_layer_file_name_utf8_ = file_name;
-			image_layer_left_	= left;
-			image_layer_top_	= top;
-			image_layer_width_	= width;
-			image_layer_height_ = height;
-		}
-		else
-		{
-			image_layer_file_name_utf8_.clear();
-			image_layer_left_	= 0;
-			image_layer_top_	= 0;
-			image_layer_width_	= 0;
-			image_layer_height_ = 0;
-		}
-	}
-}
-
-
-void CSmartPublisherDemoDlg::OnBnClickedButtonDisableImageWatermark()
-{
-	if ( BST_CHECKED == btn_check_desktop_camera_switch_.GetCheck()
-		&& !image_layer_file_name_utf8_.empty()
-		&& image_layer_width_ > 0
-		&& image_layer_height_ > 0
-		)
-	{
-		if ( publisher_handle_ != NULL )
-		{
-			CString str_btn_text;
-			btn_disable_image_watermark_.GetWindowTextW(str_btn_text);
-
-			if ( str_btn_text == L"停止水印" )
-			{
-				// 禁用水印层
-				if (NT_ERC_OK == publisher_api_.EnableLayer(publisher_handle_, 0,
-					4, 0))
-				{
-					btn_disable_image_watermark_.SetWindowTextW(L"启用水印");
-				}
-			}
-			else
-			{
-				// 启用水印层
-				if (NT_ERC_OK == publisher_api_.EnableLayer(publisher_handle_, 0,
-					4, 1))
-				{
-					btn_disable_image_watermark_.SetWindowTextW(L"停止水印");
-				}
 			}
 		}
 	}

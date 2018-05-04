@@ -105,8 +105,6 @@ public:
 	afx_msg void OnBnClickedButtonDisableCameraOverlay();
 	afx_msg void OnBnClickedButtonDisableDesktopOverlay();
 	afx_msg void OnBnClickedButtonSetRbgaRectLayer();
-	afx_msg void OnBnClickedButtonAddImageWatermark();
-	afx_msg void OnBnClickedButtonDisableImageWatermark();
 	afx_msg void OnBnClickedButtonSettingCaptureImagePath();
 	afx_msg void OnBnClickedButtonCaptureImage();
 	afx_msg LRESULT OnSDKCaptureWindowInvalid(WPARAM wParam, LPARAM lParam);

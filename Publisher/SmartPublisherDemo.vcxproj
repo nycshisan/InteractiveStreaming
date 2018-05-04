@@ -199,10 +199,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="nt_image_layer_config_dlg.h" />
-    <ClInclude Include="nt_pb_sdk\nt_image_wrapper.h" />
     <ClInclude Include="nt_pb_sdk\nt_layer_conf_wrapper.h" />
-    <ClInclude Include="nt_pb_sdk_ui\nt_ui_layer_edit_wnd.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SmartPublisherDemo.h" />
     <ClInclude Include="SmartPublisherDemoDlg.h" />
@@ -210,10 +207,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="nt_image_layer_config_dlg.cpp" />
-    <ClCompile Include="nt_pb_sdk\nt_image_wrapper.cpp" />
     <ClCompile Include="nt_pb_sdk\nt_layer_conf_wrapper.cpp" />
-    <ClCompile Include="nt_pb_sdk_ui\nt_ui_layer_edit_wnd.cpp" />
     <ClCompile Include="SmartPublisherDemo.cpp" />
     <ClCompile Include="SmartPublisherDemoDlg.cpp" />
     <ClCompile Include="stdafx.cpp">
