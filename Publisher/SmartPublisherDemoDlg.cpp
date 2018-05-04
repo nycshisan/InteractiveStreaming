@@ -537,6 +537,7 @@ BEGIN_MESSAGE_MAP(CSmartPublisherDemoDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_CHECK_FLIP_HORIZONTALCAMERA, &CSmartPublisherDemoDlg::OnBnClickedCheckFlipHorizontalcamera)
 	ON_BN_CLICKED(IDC_BUTTON_ROTATE_CAMERA, &CSmartPublisherDemoDlg::OnBnClickedButtonRotateCamera)
 	ON_MESSAGE(WM_USER_PB_SDK_CAPTURE_WINDOW_INVALID, &CSmartPublisherDemoDlg::OnSDKCaptureWindowInvalid)
+	ON_BN_CLICKED(IDC_MFCLINK1, &CSmartPublisherDemoDlg::OnBnClickedMfclink1)
 END_MESSAGE_MAP()
 
 
@@ -3884,3 +3885,8 @@ void CSmartPublisherDemoDlg::FillBitrateControlDefValue()
 	edit_video_encode_speed_.SetWindowTextW(_T("3"));
 }
 
+
+
+void CSmartPublisherDemoDlg::OnBnClickedMfclink1() {
+	// TODO: 在此添加控件通知处理程序代码
+}

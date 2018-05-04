@@ -278,4 +278,6 @@ private:
 	int publisher_handle_count_;
 
 	NT_HANDLE region_choose_tool_handle_;
+public:
+	afx_msg void OnBnClickedMfclink1();
 };

@@ -1,1 +1,1 @@
-nginx.exe -s stop
+nginx.exe -s quit

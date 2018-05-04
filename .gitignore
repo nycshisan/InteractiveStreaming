@@ -439,6 +439,7 @@ __pycache__/
 
 temp/
 !RTMPServer/node-media-server/node_modules
-!Publisher/dlls/*.dll
+!Bin/
+!Bin/*.dll
 PublisherDebug
 PlayerDebug
