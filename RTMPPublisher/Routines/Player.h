@@ -3,16 +3,11 @@
 #include "Routines.h"
 
 class PlayerRoutines : public Routines {
-	virtual void _setOptionsToPublisherSDK() {
+	std::wstring _remoteURL;
 
-	}
+	virtual void _setOptionsToPublisherSDK();
 
 public:
-	virtual void setInfo(const RoleInfo &info) {
-
-	}
-
-	virtual void run() {
-
-	}
+	virtual void setInfo(const RoleInfo &info);
+	virtual void run();
 };

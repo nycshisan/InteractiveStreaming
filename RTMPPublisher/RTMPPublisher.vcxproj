@@ -231,6 +231,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Routines\Player.cpp" />
     <ClCompile Include="Routines\Publisher.cpp" />
     <ClCompile Include="Routines\Routines.cpp" />
     <ClCompile Include="RTMPPublisher.cpp" />
