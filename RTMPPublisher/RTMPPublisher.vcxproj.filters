@@ -21,12 +21,30 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Routines\Publisher.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Routines\Routines.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Routines\Player.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RoleInfo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="RTMPPublisher.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Routines\Publisher.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Routines\Routines.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
