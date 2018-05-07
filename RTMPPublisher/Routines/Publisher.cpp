@@ -2,50 +2,30 @@
 #include "Publisher.h"
 
 
-int CalBitRate(int frame_rate, int w, int h)
-{
+int CalBitRate(int frame_rate, int w, int h) {
 	auto kbit_rate = 2000;
 
 	int area = w * h;
 
-	if (area <= (320 * 300))
-	{
+	if (area <= (320 * 300)) {
 		kbit_rate = 280;
-	}
-	else if (area <= (360 * 320))
-	{
+	} else if (area <= (360 * 320)) {
 		kbit_rate = 360;
-	}
-	else if (area <= (640 * 480))
-	{
+	} else if (area <= (640 * 480)) {
 		kbit_rate = 580;
-	}
-	else if (area <= (800 * 600))
-	{
+	} else if (area <= (800 * 600)) {
 		kbit_rate = 620;
-	}
-	else if (area <= (900 * 700))
-	{
+	} else if (area <= (900 * 700)) {
 		kbit_rate = 820;
-	}
-	else if (area <= (1280 * 720))
-	{
+	} else if (area <= (1280 * 720)) {
 		kbit_rate = 1600;
-	}
-	else if (area <= (1366 * 768))
-	{
+	} else if (area <= (1366 * 768)) {
 		kbit_rate = 2000;
-	}
-	else if (area <= (1600 * 900))
-	{
+	} else if (area <= (1600 * 900)) {
 		kbit_rate = 2300;
-	}
-	else if (area <= (1600 * 1050))
-	{
+	} else if (area <= (1600 * 1050)) {
 		kbit_rate = 2500;
-	}
-	else
-	{
+	} else {
 		kbit_rate = 2800;
 	}
 
@@ -56,50 +36,30 @@ int CalBitRate(int frame_rate, int w, int h)
 
 	return kbit_rate;
 }
-int CalMaxKBitRate(int frame_rate, int w, int h)
-{
+int CalMaxKBitRate(int frame_rate, int w, int h) {
 	auto max_kbit_rate = 2000;
 
 	int area = w * h;
 
-	if (area <= (320 * 300))
-	{
+	if (area <= (320 * 300)) {
 		max_kbit_rate = 600;
-	}
-	else if (area <= (360 * 320))
-	{
+	} else if (area <= (360 * 320)) {
 		max_kbit_rate = 800;
-	}
-	else if (area <= (640 * 480))
-	{
+	} else if (area <= (640 * 480)) {
 		max_kbit_rate = 1300;
-	}
-	else if (area <= (800 * 600))
-	{
+	} else if (area <= (800 * 600)) {
 		max_kbit_rate = 1500;
-	}
-	else if (area <= (900 * 700))
-	{
+	} else if (area <= (900 * 700)) {
 		max_kbit_rate = 2200;
-	}
-	else if (area <= (1280 * 720))
-	{
+	} else if (area <= (1280 * 720)) {
 		max_kbit_rate = 3000;
-	}
-	else if (area <= (1366 * 768))
-	{
+	} else if (area <= (1366 * 768)) {
 		max_kbit_rate = 4000;
-	}
-	else if (area <= (1600 * 900))
-	{
+	} else if (area <= (1600 * 900)) {
 		max_kbit_rate = 4500;
-	}
-	else if (area <= (1600 * 1050))
-	{
+	} else if (area <= (1600 * 1050)) {
 		max_kbit_rate = 4800;
-	}
-	else
-	{
+	} else {
 		max_kbit_rate = 5500;
 	}
 
@@ -168,7 +128,7 @@ void PublisherRoutines::setInfo(const RoleInfo &info) {
 void PublisherRoutines::run() {
 	_openPublisherHandle(true);
 	_setOptionsToPublisherSDK();
-	auto wURL = L"rtmp://localhost:1935/live/" + _id;
+	auto wURL = L"rtmp://localhost:1935/live/" + _id + L"_publisher";
 	_publisherAPI.SetURL(_publisherHandle, std::string(wURL.begin(), wURL.end()).c_str(), NULL);
 
 	if (NT_ERC_OK != _publisherAPI.StartPublisher(_publisherHandle, NULL)) {

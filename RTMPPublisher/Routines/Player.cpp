@@ -13,7 +13,7 @@ void PlayerRoutines::setInfo(const RoleInfo &info) {
 void PlayerRoutines::run() {
 	_openPublisherHandle(false);
 	_setOptionsToPublisherSDK();
-	auto wURL = L"rtmp://" + _remoteURL + L":1935/live/" + _id;
+	auto wURL = L"rtmp://" + _remoteURL + L":1935/live/" + _id + L"_player";
 	_publisherAPI.SetURL(_publisherHandle, std::string(wURL.begin(), wURL.end()).c_str(), NULL);
 
 	if (NT_ERC_OK != _publisherAPI.StartPublisher(_publisherHandle, NULL)) {
