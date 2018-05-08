@@ -17,11 +17,7 @@ protected:
 public:
 	Routines();
 
-	~Routines() {
-		_publisherAPI.StopPublisher(_publisherHandle);
-		_publisherAPI.Close(_publisherHandle);
-		_publisherAPI.UnInit();
-	}
+	~Routines();
 
 	virtual void setInfo(const RoleInfo &info) = 0;
 	virtual void run() = 0;

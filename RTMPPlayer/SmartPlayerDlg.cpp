@@ -101,23 +101,6 @@ extern "C" NT_VOID NT_CALLBACK SM_SDKVideoFrameHandle(NT_HANDLE handle, NT_PVOID
 	}
 }
 
-
-extern "C" NT_VOID NT_CALLBACK SP_SDKRenderVideoFrameTimestampHandle(NT_HANDLE handle, NT_PVOID userData,
-	NT_UINT64 timestamp,
-	NT_UINT64 reserve1, NT_PVOID reserve2) {
-	/*SYSTEMTIME sysTime;
-	::GetLocalTime(&sysTime);
-
-	char buffer[256];
-	sprintf_s(buffer, "%02d:%02d:%02d.%03d receive render frame time_stamp:%llu\r\n",
-	sysTime.wHour, sysTime.wMinute,
-	sysTime.wSecond, sysTime.wMilliseconds,
-	timestamp);
-
-	OutputDebugStringA(buffer);*/
-}
-
-
 extern "C" NT_VOID NT_CALLBACK NT_SP_SDKAudioPCMFrameHandle(NT_HANDLE handle,
 	NT_PVOID user_data, NT_UINT32 status,
 	NT_BYTE* data, NT_UINT32 size,

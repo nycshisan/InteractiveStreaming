@@ -40,3 +40,9 @@ Routines::Routines() {
 		return;
 	}
 }
+
+Routines::~Routines() {
+	_publisherAPI.StopPublisher(_publisherHandle);
+	_publisherAPI.Close(_publisherHandle);
+	_publisherAPI.UnInit();
+}
