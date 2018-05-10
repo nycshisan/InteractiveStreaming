@@ -125,14 +125,20 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\RTMPPlayer\SmartPlayerSDK\include</IncludePath>
+    <LibraryPath>..\RTMPPlayer\SmartPlayerSDK\lib\release;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PublisherDebug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\RTMPPlayer\SmartPlayerSDK\include</IncludePath>
+    <LibraryPath>..\RTMPPlayer\SmartPlayerSDK\lib\release;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PlayerDebug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\RTMPPlayer\SmartPlayerSDK\include</IncludePath>
+    <LibraryPath>..\RTMPPlayer\SmartPlayerSDK\lib\release;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -146,6 +152,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\RTMPPlayer\SmartPlayerSDK\include</IncludePath>
+    <LibraryPath>..\RTMPPlayer\SmartPlayerSDK\lib\release;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -162,6 +170,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>SmartPlayerSDK.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy $(SolutionDir)$(Configuration)\$(ProjectName).exe $(SolutionDir)..\Bin</Command>
@@ -179,6 +188,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>SmartPlayerSDK.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy $(SolutionDir)$(Configuration)\$(ProjectName).exe $(SolutionDir)..\Bin</Command>
@@ -196,6 +206,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>SmartPlayerSDK.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy $(SolutionDir)$(Configuration)\$(ProjectName).exe $(SolutionDir)..\Bin</Command>
@@ -259,6 +270,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>SmartPlayerSDK.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy $(SolutionDir)$(Configuration)\$(ProjectName).exe $(SolutionDir)..\Bin</Command>

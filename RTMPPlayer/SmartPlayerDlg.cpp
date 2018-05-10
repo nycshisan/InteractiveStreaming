@@ -10,12 +10,6 @@
 #include "SmartPlayer.h"
 #include "SmartPlayerDlg.h"
 #include "afxdialogex.h"
-#include <locale>
-#include <codecvt>
-#include <string>
-#include <sstream>
-#include <iomanip>
-#include <memory>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -70,12 +64,6 @@ extern "C" NT_VOID NT_CALLBACK SM_SDKStartPlayHandle(NT_HANDLE handle, NT_PVOID 
 
 extern "C" NT_VOID NT_CALLBACK SM_SDKVideoFrameHandle(NT_HANDLE handle, NT_PVOID userData, NT_UINT32 status,
 	const NT_SP_VideoFrame* frame) {
-	/*if (frame != NULL)
-	{
-	std::ostringstream ss;
-	ss << "Receive frame time_stamp:" << frame->timestamp_ << "ms" << "\r\n";
-	OutputDebugStringA(ss.str().c_str());
-	}*/
 
 	if (frame != NULL) {
 		if (NT_SP_E_VIDEO_FRAME_FORMAT_RGB32 == frame->format_
@@ -243,7 +231,7 @@ BOOL CSmartPlayerDlg::OnInitDialog() {
 	GetWindowText(base_title_);
 
 	// TODO:  在此添加额外的初始化代码
-	edit_url.SetWindowTextW(__wargv[1]);
+	edit_url.SetWindowTextW(__wargv[2]);
 	edit_url.EnableWindow(false);
 
 	auto wc = AfxRegisterWndClass(CS_DBLCLKS, LoadCursor(NULL, IDC_ARROW));
