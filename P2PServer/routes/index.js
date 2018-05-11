@@ -16,14 +16,13 @@ var normalizeIP = function(ip) {
 
 router.post('/', function(req, res, next) {
   var id = req.body.id;
-  var ip = req.ip;
-
-  console.log(req.body);
+  var ip = req.connection.remoteAddress;
+  var port = req.connection.remotePort;
 
   if (allowedIds.indexOf(id) === -1) {
     res.send('Not allowed!');
   } else {
-    ipPairs[id] = normalizeIP(ip);
+    ipPairs[id] = normalizeIP(ip) + ":" + port;
     res.send('OK!');
   }
 });
