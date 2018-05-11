@@ -441,5 +441,6 @@ temp/
 !RTMPServer/node-media-server/node_modules
 !Bin/
 !Bin/*.dll
+!Client/curl-7.59.0/lib/*.a
 PublisherDebug
 PlayerDebug

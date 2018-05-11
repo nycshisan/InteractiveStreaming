@@ -16,21 +16,14 @@ var normalizeIP = function(ip) {
 
 router.post('/', function(req, res, next) {
   var id = req.body.id;
-  var identity = req.body.identity;
   var ip = req.ip;
+
+  console.log(req.body);
 
   if (allowedIds.indexOf(id) === -1) {
     res.send('Not allowed!');
-  } else if (identity !== 'publisher' && identity !== 'player') {
-    res.send('Unknown identity!');
   } else {
-    if (ipPairs.indexOf(id) === -1) {
-      ipPairs[id] = {
-        'player': null,
-        'publisher': null
-      };
-    }
-    ipPairs[id][identity] = normalizeIP(ip);
+    ipPairs[id] = normalizeIP(ip);
     res.send('OK!');
   }
 });

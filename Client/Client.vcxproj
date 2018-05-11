@@ -125,20 +125,20 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\RTMPPlayer\SmartPlayerSDK\include</IncludePath>
-    <LibraryPath>..\RTMPPlayer\SmartPlayerSDK\lib\release;$(LibraryPath)</LibraryPath>
+    <IncludePath>curl-7.59.0\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);..\RTMPPlayer\SmartPlayerSDK\include</IncludePath>
+    <LibraryPath>curl-7.59.0\lib;..\RTMPPlayer\SmartPlayerSDK\lib\release;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PublisherDebug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\RTMPPlayer\SmartPlayerSDK\include</IncludePath>
-    <LibraryPath>..\RTMPPlayer\SmartPlayerSDK\lib\release;$(LibraryPath)</LibraryPath>
+    <IncludePath>curl-7.59.0\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);..\RTMPPlayer\SmartPlayerSDK\include</IncludePath>
+    <LibraryPath>curl-7.59.0\lib;..\RTMPPlayer\SmartPlayerSDK\lib\release;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PlayerDebug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\RTMPPlayer\SmartPlayerSDK\include</IncludePath>
-    <LibraryPath>..\RTMPPlayer\SmartPlayerSDK\lib\release;$(LibraryPath)</LibraryPath>
+    <IncludePath>curl-7.59.0\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);..\RTMPPlayer\SmartPlayerSDK\include</IncludePath>
+    <LibraryPath>curl-7.59.0\lib;..\RTMPPlayer\SmartPlayerSDK\lib\release;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -152,8 +152,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\RTMPPlayer\SmartPlayerSDK\include</IncludePath>
-    <LibraryPath>..\RTMPPlayer\SmartPlayerSDK\lib\release;$(LibraryPath)</LibraryPath>
+    <IncludePath>curl-7.59.0\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);..\RTMPPlayer\SmartPlayerSDK\include</IncludePath>
+    <LibraryPath>curl-7.59.0\lib;..\RTMPPlayer\SmartPlayerSDK\lib\release;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -166,11 +166,12 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SmartPlayerSDK.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SmartPlayerSDK.lib;libcurl.dll.a;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy $(SolutionDir)$(Configuration)\$(ProjectName).exe $(SolutionDir)..\Bin</Command>
@@ -184,11 +185,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SmartPlayerSDK.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SmartPlayerSDK.lib;libcurl.dll.a;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy $(SolutionDir)$(Configuration)\$(ProjectName).exe $(SolutionDir)..\Bin</Command>
@@ -202,11 +204,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SmartPlayerSDK.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SmartPlayerSDK.lib;libcurl.dll.a;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy $(SolutionDir)$(Configuration)\$(ProjectName).exe $(SolutionDir)..\Bin</Command>
@@ -264,13 +267,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SmartPlayerSDK.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SmartPlayerSDK.lib;libcurl.dll.a;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy $(SolutionDir)$(Configuration)\$(ProjectName).exe $(SolutionDir)..\Bin</Command>
