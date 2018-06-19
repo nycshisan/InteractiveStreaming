@@ -14,6 +14,26 @@
 #define new DEBUG_NEW
 #endif
 
+std::atomic<bool> exitFlag = false;
+
+DWORD WINAPI ExitRoutine(LPVOID lpParam) {
+	std::wifstream statusFile;
+	while (!exitFlag.load()) {
+		statusFile.open("status.txt");
+		int status;
+		statusFile >> status;
+		statusFile.close();
+		if (!status) {
+			exitFlag.store(true);
+		}
+		Sleep(1);
+	}
+	return 0;
+}
+
+void CreateExitRoutine() {
+	auto hExitThread = CreateThread(NULL, 0, ExitRoutine, NULL, 0, NULL);
+}
 
 // CSmartPlayerApp
 
@@ -71,6 +91,8 @@ BOOL CSmartPlayerApp::InitInstance() {
 		}
 	} else {
 		// Simply run a audio-only player in the console
+		CreateExitRoutine();
+
 		SmartPlayerSDKAPI api;
 		NT_HANDLE hPlayer;
 		GetSmartPlayerSDKAPI(&api);
@@ -90,7 +112,9 @@ BOOL CSmartPlayerApp::InitInstance() {
 
 		api.StartPlay(hPlayer);
 
-		WaitMessage();
+		while (!exitFlag.load()) {
+			Sleep(1);
+		}
 
 		api.StopPlay(hPlayer);
 		api.Close(hPlayer);

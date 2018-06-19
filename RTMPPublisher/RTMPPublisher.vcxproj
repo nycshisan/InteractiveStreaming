@@ -239,7 +239,7 @@
       <AdditionalDependencies>SmartPublisherSDK.lib; User32.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(SolutionDir)$(Configuration)\$(ProjectName).exe $(SolutionDir)..\Bin</Command>
+      <Command>copy $(SolutionDir)$(Configuration)\$(ProjectName).exe $(SolutionDir)..\Bin\SmartPublisherDemo.exe</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='PlayerDebug|Win32'">

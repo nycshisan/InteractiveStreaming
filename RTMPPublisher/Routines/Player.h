@@ -4,6 +4,7 @@
 
 class PlayerRoutines : public Routines {
 	std::wstring _remoteURL;
+	long _port;
 
 	virtual void _setOptionsToPublisherSDK();
 

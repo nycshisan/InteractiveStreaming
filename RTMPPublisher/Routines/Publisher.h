@@ -4,6 +4,7 @@
 
 class PublisherRoutines : public Routines {
 	int _frameRate = 0;
+	long _port;
 
 	virtual void _setOptionsToPublisherSDK();
 
