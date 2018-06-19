@@ -23,7 +23,7 @@ router.post('/', function(req, res, next) {
     res.send('Not allowed!');
   } else {
     ipPairs[id] = normalizeIP(ip) + ":" + port;
-    res.send('OK!');
+    res.send(ipPairs[id]);
   }
 });
 

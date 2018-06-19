@@ -8,13 +8,12 @@ void PlayerRoutines::_setOptionsToPublisherSDK() {
 void PlayerRoutines::setInfo(const RoleInfo &info) {
 	_id = info.id;
 	_remoteURL = info.remoteURL;
-	_port = info.port;
 }
 
 void PlayerRoutines::run() {
 	_openPublisherHandle(false);
 	_setOptionsToPublisherSDK();
-	auto wURL = L"rtmp://localhost:" + std::to_wstring(_port) + L"/live/" + _id + L"_player";
+	auto wURL = _remoteURL + _id + L"_player";
 	std::wcout << L"publishing at: " + wURL << std::endl;
 	_publisherAPI.SetURL(_publisherHandle, std::string(wURL.begin(), wURL.end()).c_str(), NULL);
 

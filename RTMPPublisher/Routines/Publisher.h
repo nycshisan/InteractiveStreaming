@@ -4,7 +4,7 @@
 
 class PublisherRoutines : public Routines {
 	int _frameRate = 0;
-	long _port;
+	std::wstring _remoteURL;
 
 	virtual void _setOptionsToPublisherSDK();
 

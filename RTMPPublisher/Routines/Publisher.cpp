@@ -123,13 +123,13 @@ void PublisherRoutines::_setOptionsToPublisherSDK() {
 void PublisherRoutines::setInfo(const RoleInfo &info) {
 	_id = info.id;
 	_frameRate = info.frameRate;
-	_port = info.port;
+	_remoteURL = info.remoteURL;
 }
 
 void PublisherRoutines::run() {
 	_openPublisherHandle(true);
 	_setOptionsToPublisherSDK();
-	auto wURL = L"rtmp://localhost:" + std::to_wstring(_port) + L"/live/" + _id + L"_publisher";
+	auto wURL = _remoteURL + _id + L"_publisher";
 	std::wcout << L"publishing at: " + wURL << std::endl;
 	_publisherAPI.SetURL(_publisherHandle, std::string(wURL.begin(), wURL.end()).c_str(), NULL);
 

@@ -6,5 +6,4 @@ struct RoleInfo {
 	std::wstring id;
 	std::wstring remoteURL;
 	int frameRate = 0;
-	int port;
 };
